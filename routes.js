@@ -58,21 +58,22 @@ module.exports = function routes(app){
             client_id: automaticAPI.automaticClientId
           , client_secret: automaticAPI.automaticClientSecret
           , code: req.query.code
+          , grant_type: 'authorization_code'
         }
       }, saveAuthToken)
     } else {
-      res.json({error: 'No code provided'});
+      res.json({error: 'No code provided', response: body});
     }
 
     function saveAuthToken(e, r, body) {
       var access_token = JSON.parse(body || '{}')
       if (access_token.access_token) {
         req.session.access_token = access_token.access_token;
-        req.session.user_id = access_token.user_id;
+        req.session.user_id = access_token.user.id;
         req.session.scopes = access_token.scopes;
         res.redirect('/');
       } else {
-        res.json({error: 'No access token'});
+        res.json({error: 'No access token', response: body});
       }
     }
   });
