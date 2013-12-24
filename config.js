@@ -14,7 +14,9 @@ module.exports = function(app){
   var automaticAPI = {
       automaticClientId: process.env.AUTOMATIC_CLIENT_ID || keys.automaticClientId
     , automaticClientSecret: process.env.AUTOMATIC_CLIENT_SECRET || keys.automaticClientSecret
+    , automaticAuthorizeUrl: process.env.AUTOMATIC_AUTHORIZE_URL || keys.automaticAuthorizeUrl
     , automaticAuthTokenUrl: process.env.AUTOMATIC_AUTH_TOKEN_URL || keys.automaticAuthTokenUrl
+    , automaticScopes: 'scope:trip:summary scope:ignition:on'
   }
   app.set('automaticAPI', automaticAPI);
 

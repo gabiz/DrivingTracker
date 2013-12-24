@@ -87,4 +87,7 @@ module.exports = function routes(app){
     }
   });
 
+  app.get('/authorize/', function(req, res) {
+    res.redirect(automaticAPI.automaticAuthorizeUrl + '?client_id=' + automaticAPI.automaticClientId + '&response_type=code&scope=' + automaticAPI.automaticScopes)
+  });
 }
