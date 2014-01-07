@@ -85,6 +85,9 @@ module.exports = function routes(app){
       wss.sendEvent(req.body);
       res.json({success: true});
     }
+    else {
+        console.log('invalid webhook data')
+    }
   });
 
   app.get('/authorize/', function(req, res) {
