@@ -41,6 +41,23 @@ module.exports = function(app){
   });
 
   // Prod
+  app.configure('staging', function(){
+    this
+      .use(express.logger({buffer: 10000}))
+      .use(express.errorHandler())
+      .enable('prod')
+      .set('domain', 'automaticator-stage.herokuapp.com');
+
+    app.all('*',function(req, res, next) {
+      if(req.headers['x-forwarded-proto'] != 'https') {
+        res.redirect('https://' + req.headers.host + req.path);
+      } else {
+        next();
+      }
+    });
+  });
+
+  // Prod
   app.configure('production', function(){
     this
       .use(express.logger({buffer: 10000}))
