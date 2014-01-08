@@ -34,18 +34,12 @@ wss.on('connection', function(ws) {
 });
 
 wss.sendEvent = function(data) {
-    if(data && data.user && data.user.id) {
-        var clients = _.filter(this.clients, function(c) {
-            return c.user_id == data.user.id;
-        });
-        if(clients.length == 0) {
-            console.log('no clients for this user')
-        }
-        clients.forEach(function(client) {
-            client.send(JSON.stringify(data));
-        })
-    }
-    else {
-        console.log('invalid data');
+  if(data && data.user && data.user.id) {
+      var clients = _.filter(this.clients, function(c) {
+        return c.user_id == data.user.id;
+      });
+      clients.forEach(function(client) {
+        client.send(JSON.stringify(data));
+      })
     }
 }
