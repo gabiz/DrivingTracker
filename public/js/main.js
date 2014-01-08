@@ -70,11 +70,6 @@ setInterval(function() {
 }, 15000);
 
 
-$('#simulate').click(function() {
-  $.post('/simulate/');
-});
-
-
 function addMarker(lat, lon, title, description) {
   L.mapbox.markerLayer({
     type: 'Feature',

@@ -15,35 +15,6 @@ module.exports = function routes(app){
   });
 
 
-  app.post('/simulate/', function(req, res) {
-    if(req.session && req.session.access_token) {
-      var events = [
-        ['ignition:on', 100],
-        ['region:changed', 2000],
-        ['mil:on', 2000],
-        ['mil:off', 2000],
-        ['notification:hard_accel', 3000],
-        ['notification:speeding', 2000],
-        ['notification:hard_brake', 2000],
-        ['ignition:off', 3000],
-        ['trip:finished', 2000],
-        ['parking:changed', 1000]
-      ]
-
-      async.eachSeries(events, function(item, cb) {
-        setTimeout(function() {
-          request.get({
-            uri: 'https://api.automatic.com/v1/test/' + item[0],
-            headers: {Authorization: 'token ' + req.session.access_token}
-          });
-          cb();
-        }, item[1]);
-      });
-
-    }
-  });
-
-
   app.get('/logout/', function(req, res) {
     req.session.destroy();
     res.redirect('/');
