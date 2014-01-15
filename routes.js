@@ -1,6 +1,4 @@
-var request = require('request')
-  , qs = require('querystring')
-  , async = require('async');
+var request = require('request');
 
 module.exports = function routes(app){
 
@@ -51,12 +49,14 @@ module.exports = function routes(app){
 
 
   app.post('/webhook/', function(req, res) {
+    console.log('>>>>>>> Incoming Webhook: ' + JSON.stringify(req.body));
     if(req.body) {
       var wss = app.get('wss');
       wss.sendEvent(req.body);
       res.json({success: true});
     }
   });
+
 
   app.get('/authorize/', function(req, res) {
     res.redirect(automaticAPI.automaticAuthorizeUrl + '?client_id=' + automaticAPI.automaticClientId + '&response_type=code&scope=' + automaticAPI.automaticScopes)
