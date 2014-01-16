@@ -30,9 +30,15 @@ ws.onmessage = function (msg) {
 
   console.log(data)
 
+  if (data.vehicle) {
+    description.push(data.vehicle.display_name + ': ' + data.vehicle.year + ' ' + data.vehicle.make  + ' ' + data.vehicle.model);
+  }
+
 
   if (data.location) {
-    description.push('Accuracy: ' + data.location.accuracy_m);
+    if(data.location.accuracy_m) {
+      description.push('Accuracy: ' + data.location.accuracy_m.toFixed(0) + 'm');
+    }
 
     if (data.type == 'notification:speeding') {
       description.push('Speed: ' + data.speed_mph + ' mph');
