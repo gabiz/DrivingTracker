@@ -43,16 +43,18 @@ ws.onmessage = function (msg) {
     } else if (data.type == 'region:changed') {
       description.push(data.region.status + ' ' + data.region.name + ' (' + data.region.tag + ')');
     } else if (data.type == 'mil:on' || data.type == 'mil:off') {
-      data.dtcs.forEach(function(dtc) { description.push(dtc.code + ': ' + dtc.description); });
+      if(data.dtcs) {
+        data.dtcs.forEach(function(dtc) { description.push(dtc.code + ': ' + dtc.description); });
+      }
     }
+
+    updateAlert(title, '');
+    addMarker(data.location.lat, data.location.lon, title, description.join('<br>'));
 
     geocoder.reverseQuery([data.location.lon, data.location.lat], function(e, response) {
       var location = buildLocation(response);
-      description.push('Location: ' + location);
-
-      addMarker(data.location.lat, data.location.lon, title, description.join('<br>'));
-      updateAlert(title, location);
       logMessage(title, date, location);
+      updateAlert(title, location);
     });
   }
 
