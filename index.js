@@ -20,15 +20,14 @@ server.listen(port, function(){
 
 var wss = new WebSocketServer({server: server});
 app.set('wss', wss);
-app.set('wsClients', {});
 
-wss.on('connection', function(ws) {
-  ws.send(JSON.stringify({msg: "Socket Opened"}));
-  parseCookie(ws.upgradeReq, null, function(err) {
-      var sessionID = ws.upgradeReq.signedCookies['connect.sid'];
+wss.on('connection', function(client) {
+  client.send(JSON.stringify({msg: "Socket Opened"}));
+  parseCookie(client.upgradeReq, null, function(err) {
+      var sessionID = client.upgradeReq.signedCookies['connect.sid'];
       var store = app.get('store')
       store.get(sessionID, function(e, session) {
-        ws.user_id = session.user_id;
+        client.user_id = session.user_id;
       });
   });
 });
