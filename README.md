@@ -14,15 +14,29 @@ A version of this application is available at [https://automaticator.herokuapp.c
 
     npm install
 
-### Copy keys-sample.js to keys.js
+### Configure your client id and client secret
 
-    cp keys-sample.js keys.js
-
-Add your `automaticClientId` and `automaticClientSecret` to `keys.js`.
+Copy the file `config-sample.json` to `config.json` and add your Automatic client id and client secret.  Alternatively, create environment variables named `AUTOMATIC_CLIENT_ID`, `AUTOMATIC_CLIENT_SECRET`, `AUTOMATIC_AUTHORIZE_URL`, and `AUTOMATIC_AUTH_TOKEN_URL`.
 
 ### Run the app
 
     node index.js
+
+### Deploy to Heroku
+
+The app includes a `Procfile` and `package.json` which will enable [easy deployment to Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-your-application-to-heroku).  If you have the heroku toolbelt installed, you can create, configure and deploy this app in five commands:
+
+    heroku create
+
+    heroku config:add AUTOMATIC_CLIENT_ID="YOUR AUTOMATIC CLIENT ID"
+    heroku config:add AUTOMATIC_CLIENT_SECRET="YOUR AUTOMATIC CLIENT SECRET"
+    heroku config:add AUTOMATIC_AUTHORIZE_URL=https://www.automatic.com/oauth/authorize/
+    heroku config:add AUTOMATIC_AUTH_TOKEN_URL=https://www.automatic.com/oauth/access_token/
+
+    git push heroku master
+
+
+See [deploying a node.js app](https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-your-application-to-heroku) for more information.
 
 ## License
 

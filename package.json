@@ -11,5 +11,6 @@
     , "request": "= 2.31.x"
     , "ws": "= 0.4.x"
     , "underscore": "= 1.5.x"
+    , "nconf": "= 0.6.x"
   }
 }
