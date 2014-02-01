@@ -1,5 +1,5 @@
-var map = L.mapbox.map('map', 'brendannee.g70bm364', {maxZoom: 16}).setView([37.9, -122.5], 10)
-  , geocoder = L.mapbox.geocoder('brendannee.g70bm364')
+var map = L.mapbox.map('map', 'automatic.h5kpm228', {maxZoom: 16}).setView([37.9, -122.5], 10)
+  , geocoder = L.mapbox.geocoder('automatic.h5kpm228')
   , markers = []
   , events = {
       'ignition:on': 'Ignition On'
