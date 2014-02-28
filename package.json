@@ -1,16 +1,20 @@
 {
   "name": "Automaticator",
-  "description": "Automatic API Demo Application",
-  "version": "0.0.4",
+  "description": "Automatic API Webhook Demo Application",
+  "version": "0.0.5",
   "engines": {
     "node": "0.10.x",
     "npm":  "1.3.x"
   },
   "dependencies": {
       "express": "= 3.4.x"
-    , "request": "= 2.31.x"
+    , "request": "= 2.34.x"
     , "ws": "= 0.4.x"
-    , "underscore": "= 1.5.x"
+    , "underscore": "= 1.6.x"
     , "nconf": "= 0.6.x"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "http://github.com/automatic/automaticator.git"
   }
 }
