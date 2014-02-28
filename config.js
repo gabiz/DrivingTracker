@@ -1,9 +1,13 @@
 var express = require('express')
   , MemoryStore = express.session.MemoryStore
   , store = new MemoryStore()
-  , nconf = require('nconf');
+  , nconf = require('nconf')
+  , monk = require('monk');
 
 module.exports = function(app){
+  var db = monk(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/automaticator');
+
+  app.set('db', db);
 
   app.set('store', store);
 

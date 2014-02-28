@@ -2,12 +2,31 @@ var request = require('request')
   , nconf = require('nconf');
 
 module.exports = function routes(app){
+  var webhooks = app.get('db').get('automaticator');
 
   app.get('/', function(req, res) {
     if(req.session && req.session.access_token) {
       res.sendfile(__dirname + '/public/map.html');
     } else {
       res.sendfile(__dirname + '/public/signin.html');
+    }
+  });
+
+  app.get('/logs/', function(req, res) {
+    if(req.session && req.session.access_token) {
+      res.sendfile(__dirname + '/public/logs.html');
+    } else {
+      res.sendfile(__dirname + '/public/signin.html');
+    }
+  });
+
+  app.get('/logs/api', function(req, res) {
+    if(req.session.user_id) {
+      webhooks.find({user: {id: req.session.user_id} }, function(e, docs) {
+        res.json(docs);
+      });
+    } else {
+      res.json({error: 'Not logged in'});
     }
   });
 
@@ -52,6 +71,7 @@ module.exports = function routes(app){
     if(req.body) {
       var wss = app.get('wss');
       wss.sendEvent(req.body);
+      webhooks.insert(req.body);
       res.json({success: true});
     }
   });
