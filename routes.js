@@ -30,7 +30,7 @@ module.exports = function routes(app){
         }
       }, saveAuthToken)
     } else {
-      res.json({error: 'No code provided', response: body});
+      res.redirect('/');
     }
 
     function saveAuthToken(e, r, body) {
