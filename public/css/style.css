@@ -161,3 +161,7 @@ nav {
 #alert {
   clear: both;
 }
+
+#logs tr td:last-child {
+  max-width: 600px;
+}
