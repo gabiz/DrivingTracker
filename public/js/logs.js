@@ -28,7 +28,7 @@ function formatItem(item) {
 
   var row = []
 
-  row.push(moment(item.created_at, time_zone).format('YYYY-MM-DD H:MM A'));
+  row.push(moment(item.created_at, item.time_zone).format('YYYY-MM-DD H:MM A'));
   row.push(item.type);
   row.push(item.vehicle.display_name);
   row.push('<a href="https://www.google.com/maps/place/' + item.location.lat + ',' + item.location.lon + '">map</a>');
