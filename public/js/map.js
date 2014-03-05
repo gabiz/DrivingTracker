@@ -1,5 +1,5 @@
-var map = L.mapbox.map('map', 'automatic.h5kpm228', {maxZoom: 16}).setView([37.9, -122.5], 10)
-  , geocoder = L.mapbox.geocoder('automatic.h5kpm228')
+var map = L.mapbox.map('map', 'examples.map-9ijuk24y', {maxZoom: 16}).setView([37.9, -122.5], 10)
+  , geocoder = L.mapbox.geocoder('examples.map-9ijuk24y')
   , markers = []
   , events = {
       'ignition:on': 'Ignition On'

@@ -13,9 +13,5 @@
     , "underscore": "= 1.6.x"
     , "nconf": "= 0.6.x"
     , "monk": "0.7.x"
-  },
-  "repository": {
-    "type" : "git",
-    "url" : "http://github.com/automatic/automaticator.git"
   }
 }
