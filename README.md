@@ -20,11 +20,11 @@ Copy the file `config-sample.json` to `config.json` and add your Automatic clien
 
 ### Run the app
 
-    node index.js
+    DEBUG=automaticator ./bin/www
 
 ### Deploy to Heroku
 
-The app includes a `Procfile` and `package.json` which will enable [easy deployment to Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-your-application-to-heroku).  If you have the heroku toolbelt installed, you can create, configure and deploy this app in five commands:
+If you have the heroku toolbelt installed, you can create, configure and deploy this app in five commands:
 
     heroku create
 

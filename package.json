@@ -1,17 +1,26 @@
 {
   "name": "Automaticator",
   "description": "Automatic API Webhook Demo Application",
-  "version": "0.0.5",
+  "version": "0.1.0",
+  "private": false,
   "engines": {
     "node": "0.10.x",
     "npm":  "1.4.x"
   },
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
-      "express": "= 3.4.x"
-    , "request": "= 2.34.x"
-    , "ws": "= 0.4.x"
-    , "underscore": "= 1.6.x"
-    , "nconf": "= 0.6.x"
-    , "monk": "0.7.x"
+    "express": "~3.4.8",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "request": "= 2.34.x",
+    "ws": "= 0.4.x",
+    "underscore": "= 1.6.x",
+    "nconf": "= 0.6.x",
+    "monk": "= 0.7.x"
   }
 }
