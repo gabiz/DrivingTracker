@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 var debug = require('debug')('automaticator');
 var app = require('../app');
-var db = require('../database');
-var _ = require('underscore');
-var express = require('express');
-var WebSocketServer = require('ws').Server;
+var websocket = require('../websocket');
 
 app.set('port', process.env.PORT || 3000);
 
@@ -12,38 +9,10 @@ var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
 
+
+var WebSocketServer = require('ws').Server;
 var wss = new WebSocketServer({server: server});
-var parseCookie = express.cookieParser('rXrq6xCSJu');
+app.set('wss', wss);
 
-wss.on('connection', function(client) {
-  client.send(JSON.stringify({msg: "Socket Opened"}));
-  parseCookie(client.upgradeReq, null, function(err) {
-      var sessionID = client.upgradeReq.signedCookies['connect.sid'];
-      var store = app.get('store')
-      store.get(sessionID, function(e, session) {
-        client.user_id = session.user_id;
-      });
-  });
-});
+websocket.setup(app);
 
-wss.sendEvent = function(data) {
-  console.log(data.user.id);
-  if(data && data.user && data.user.id) {
-    console.log(this.clients);
-    var clients = _.filter(this.clients, function(c) {
-      return c.user_id == data.user.id;
-    });
-    clients.forEach(function(client) {
-      client.send(JSON.stringify(data));
-    });
-  }
-}
-
-app.post('/webhook/', function(req, res) {
-  console.log('>>>>>>> Incoming Webhook: ' + JSON.stringify(req.body));
-  if(req.body) {
-    wss.sendEvent(req.body);
-    db.saveLog(req.body);
-    res.json({success: true});
-  }
-})
