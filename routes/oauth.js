@@ -23,20 +23,22 @@ exports.redirect = function(req, res) {
         , code: req.query.code
         , grant_type: 'authorization_code'
       }
-    }, saveAuthToken)
+    }, saveAuthToken);
   } else {
     res.redirect('/');
   }
 
   function saveAuthToken(e, r, body) {
-    var access_token = JSON.parse(body || '{}')
-    if (access_token.access_token) {
+    var access_token;
+    try {
+      access_token = JSON.parse(body || '{}')
       req.session.access_token = access_token.access_token;
       req.session.user_id = access_token.user.id;
       req.session.scopes = access_token.scopes;
       res.redirect('/');
-    } else {
-      res.json({error: 'No access token', response: body});
+    } catch(e) {
+      console.log(e);
+      res.json({error: 'No access token'});
     }
   }
 }
