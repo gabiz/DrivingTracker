@@ -1,4 +1,8 @@
 exports.index = function(req, res) {
+  if(process.env.TOKEN) {
+    req.session.access_token = process.env.TOKEN;
+  }
+
   if(req.session && req.session.access_token) {
     res.sendfile('public/map.html');
   } else {
