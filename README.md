@@ -20,21 +20,38 @@ Copy the file `config-sample.json` to `config.json` and add your Automatic clien
 
 ### Run the app
 
-    DEBUG=automaticator ./bin/www
+    DEBUG=automaticator npm start
+
+### View the app
+
+Open `localhost:3000` in your browser.
+
+### Testing locally, skipping oAuth
+
+You can test locally as a logged in user, bypassing oAuth by including an `access_token` when running the app.
+
+    DEBUG=automaticator TOKEN=YOUR-AUTOMATIC-ACCESS-TOKEN npm start
 
 ### Deploy to Heroku
 
-If you have the heroku toolbelt installed, you can create, configure and deploy this app in five commands:
+If you have the heroku toolbelt installed, you can create, configure and deploy this app to Heroku.  To create an app:
 
     heroku create
+
+If you already created an app, add it as a git remote:
+
+    git remote add heroku YOUR-HEROKU-GIT-URL
+
+Configure the heroku app's environment variables:
 
     heroku config:add AUTOMATIC_CLIENT_ID="YOUR AUTOMATIC CLIENT ID"
     heroku config:add AUTOMATIC_CLIENT_SECRET="YOUR AUTOMATIC CLIENT SECRET"
     heroku config:add AUTOMATIC_AUTHORIZE_URL=https://www.automatic.com/oauth/authorize/
     heroku config:add AUTOMATIC_AUTH_TOKEN_URL=https://www.automatic.com/oauth/access_token/
 
-    git push heroku master
+Deploy your app to heroku:
 
+    git push heroku master
 
 See [deploying a node.js app](https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-your-application-to-heroku) for more information.
 
@@ -61,4 +78,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
