@@ -30,7 +30,7 @@ exports.setup = function(app) {
   }
 
 
-  app.post('/webhook/', function(req, res) {
+  app.post('/webhook', function(req, res) {
     console.log('>>>>>>> Incoming Webhook: ' + JSON.stringify(req.body));
     if(req.body) {
       wss.sendEvent(req.body);
