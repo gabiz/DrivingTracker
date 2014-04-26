@@ -47,6 +47,9 @@ app.get('/logout/', oauth.logout);
 app.get('/redirect', oauth.redirect);
 
 
+app.get('/emotiv', api.getEmotiv);
+app.post('/emotiv', api.postEmotiv);
+
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

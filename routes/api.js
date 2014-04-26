@@ -32,3 +32,14 @@ exports.lastLog = function(req, res) {
   //   res.json({error: 'Not logged in'});
   // }
 }
+
+exports.getEmotiv = function(req, res) {
+  db.getEmotivLogs(function(e, docs) {
+    res.json(docs);
+  });
+}
+
+exports.postEmotiv = function(req, res) {
+  
+}
+

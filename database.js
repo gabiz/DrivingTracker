@@ -16,3 +16,12 @@ exports.getReverseAllLogs = function(cb) {
 exports.saveLog = function(body) {
   webhook_logs.insert(body);
 }
+
+exports.getEmotivLogs = function(cb) {
+  webhook_logs.find({ type: "emotiv" }, {sort:[['_id',-1]]}, cb);
+}
+
+exports.postEmotivLog = function(cb) {
+  webhook_logs.insert(body);
+}
+
