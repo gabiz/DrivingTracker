@@ -31,7 +31,11 @@ function formatItem(item) {
   row.push(moment(item.created_at).format('YYYY-MM-DD H:MM A'));
   row.push(item.type);
   row.push(item.vehicle.display_name);
-  row.push('<a href="https://www.google.com/maps/place/' + item.location.lat + ',' + item.location.lon + '" target="_blank">map</a>');
+  if (item.end_location) {
+    row.push('<a href="https://www.google.com/maps/place/' + item.end_location.lat + ',' + item.end_location.lon + '" target="_blank">map</a>');
+  } else {
+    row.push('');
+  }
   row.push(JSON.stringify(data, null, " "));
 
   $('<tr>')
