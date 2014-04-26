@@ -27,3 +27,6 @@ exports.postEmotivLog = function(body) {
   webhook_logs.insert(body);
 }
 
+exports.dropLog = function(cb) {
+  webhook_logs.drop(cb);
+}
