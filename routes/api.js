@@ -40,6 +40,7 @@ exports.getEmotiv = function(req, res) {
 }
 
 exports.postEmotiv = function(req, res) {
-  
+  req.body['type'] = "emotiv";
+  db.postEmotivLog(req.body)
 }
 
