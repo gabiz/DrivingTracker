@@ -9,7 +9,12 @@ exports.getLogs = function(user_id, cb) {
 }
 
 exports.getReverseLogs = function(user_id, cb) {
-  webhook_logs.find({}, cb);
+  // query._id={$gt:0}
+
+  // db.driver.webhook_logs.findItems(query,null,{limit:3,sort:[['_id',1]]},function(err,list) {
+  //   cb(list);
+  // })
+  webhook_logs.find({}, {limit:3,sort:[['_id',1]]}, cb);
   // webhook_logs.find({user: {id: user_id} }, {sort:['_id',-1]}, cb);
 }
 
