@@ -4,12 +4,11 @@ exports.index = function(req, res) {
   }
 
   if(req.session && req.session.access_token) {
-    res.sendfile('public/map.html');
+    res.sendfile('public/logs.html');
   } else {
     res.sendfile('public/signin.html');
   }
 }
-
 
 exports.logs = function(req, res) {
   if(req.session && req.session.access_token) {
