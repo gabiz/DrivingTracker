@@ -6,6 +6,10 @@ exports.getLogs = function(user_id, cb) {
   webhook_logs.find({user: {id: user_id} }, cb);
 }
 
+exports.getReverseLogs = function(user_id, cb) {
+  webhook_logs.find({user: {id: user_id}, _id: -1}, cb);
+}
+
 exports.saveLog = function(body) {
   webhook_logs.insert(body);
 }
