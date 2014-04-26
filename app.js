@@ -39,7 +39,7 @@ if (app.get('env') !== 'development') {
 app.get('/', routes.index);
 app.get('/logs/', routes.logs);
 app.get('/logs/api/', api.logs);
-app.get('/logs/reverse', routes.reverseLogs);
+app.get('/logs/reverse', api.reverseLogs);
 app.get('/logs/last', api.lastLog);
 
 app.get('/authorize/', oauth.authorize);
