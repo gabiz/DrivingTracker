@@ -42,7 +42,7 @@ app.get('/logs/api/', api.logs);
 
 app.get('/authorize/', oauth.authorize);
 app.get('/logout/', oauth.logout);
-app.get('/redirect/', oauth.redirect);
+app.get('/redirect', oauth.redirect);
 
 
 /// catch 404 and forwarding to error handler
