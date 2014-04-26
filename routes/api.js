@@ -11,7 +11,7 @@ exports.logs = function(req, res) {
 }
 
 exports.reverseLogs = function(req, res) {
-  db.getReverseLogs(function(e, docs) {
+  db.getReverseAllLogs(function(e, docs) {
     res.json(docs);
   });
   // if(req.session.user_id) {
@@ -21,7 +21,7 @@ exports.reverseLogs = function(req, res) {
 }
 
 exports.lastLog = function(req, res) {
-  db.getReverseLogs(req.session.user_id, function(e, docs) {
+  db.getReverseAllLogs(req.session.user_id, function(e, docs) {
     res.json(docs[0]);
   });
   // if(req.session.user_id) {
