@@ -31,8 +31,8 @@ function formatItem(item) {
   row.push(moment(item.created_at).format('YYYY-MM-DD H:MM A'));
   row.push(item.type);
   row.push(item.vehicle.display_name);
-  if (item.end_location) {
-    row.push('<a href="https://www.google.com/maps/place/' + item.end_location.lat + ',' + item.end_location.lon + '" target="_blank">map</a>');
+  if (item.trip && item.trip.end_location) {
+    row.push('<a href="https://www.google.com/maps/place/' + item.trip.end_location.lat + ',' + item.trip.end_location.lon + '" target="_blank">map</a>');
   } else {
     row.push('');
   }
