@@ -9,7 +9,7 @@ exports.getLogs = function(user_id, cb) {
   webhook_logs.find({ user: {id: user_id} ,kind: "automatic" }, {sort:[['_id',-1]]}, cb);
 }
 
-exports.getReverseAllLogs = function(cb) {
+exports.getReverseAutomaticLogs = function(cb) {
   webhook_logs.find({ kind: "automatic" }, {limit:10,sort:[['_id',-1]]}, cb);
 }
 
@@ -25,5 +25,9 @@ exports.getEmotivLogs = function(cb) {
 exports.postLog = function(kind, body) {
   body['kind'] = kind;
   webhook_logs.insert(body);
+}
+
+exports.getReverseAnyLogs = function(cb) {
+  webhook_logs.find({}, {limit:10,sort:[['_id',-1]]}, cb);
 }
 

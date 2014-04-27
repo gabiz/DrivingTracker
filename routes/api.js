@@ -21,21 +21,14 @@ exports.reverseLogs = function(req, res) {
 }
 
 exports.lastLog = function(req, res) {
-  db.getReverseAllLogs(function(e, docs) {
+  db.getReverseAutomaticLogs(function(e, docs) {
     res.json(docs[0]);
   });
-  // if(req.session.user_id) {
-  //   db.getReverseLogs(req.session.user_id, function(e, docs) {
-  //     res.json(docs[0]);
-  //   });
-  // } else {
-  //   res.json({error: 'Not logged in'});
-  // }
 }
 
 exports.getEmotiv = function(req, res) {
   db.getEmotivLogs(function(e, docs) {
-    res.json(docs);
+    res.json(docs[0]);
   });
 }
 
@@ -47,5 +40,11 @@ exports.postEmotiv = function(req, res) {
 exports.postAutomatic = function(req, res) {
   db.postLog("automatic", req.body);
   res.send(200, "OK")
+}
+
+exports.anyLast = function(req, res) {
+  db.getReverseAnyLogs(function(e, docs) {
+    res.json(docs[0]);
+  });
 }
 
