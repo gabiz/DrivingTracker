@@ -22,8 +22,8 @@ exports.getEmotivLogs = function(cb) {
   webhook_logs.find({ kind: "emotiv" }, {sort:[['_id',-1]]}, cb);
 }
 
-exports.postEmotivLog = function(body) {
-  body['kind'] = "emotiv";
+exports.postLog = function(kind, body) {
+  body['kind'] = kind;
   webhook_logs.insert(body);
 }
 

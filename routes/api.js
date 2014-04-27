@@ -40,7 +40,12 @@ exports.getEmotiv = function(req, res) {
 }
 
 exports.postEmotiv = function(req, res) {
-  db.postEmotivLog(req.body);
+  db.postLog("emotiv", req.body);
+  res.send(200, "OK")
+}
+
+exports.postAutomatic = function(req, res) {
+  db.postLog("automatic", req.body);
   res.send(200, "OK")
 }
 
