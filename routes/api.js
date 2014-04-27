@@ -44,8 +44,3 @@ exports.postEmotiv = function(req, res) {
   res.send(200, "OK")
 }
 
-exports.resetLog = function(req, res) {
-  db.dropLog(function(e, docs) {
-    res.send(200, "OK")
-  });
-}

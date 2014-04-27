@@ -41,7 +41,6 @@ app.get('/logs/', routes.logs);
 app.get('/logs/api/', api.logs);
 app.get('/logs/reverse', api.reverseLogs);
 app.get('/logs/last', api.lastLog);
-app.get('/logs/reset', api.resetLog);
 
 app.get('/authorize/', oauth.authorize);
 app.get('/logout/', oauth.logout);
