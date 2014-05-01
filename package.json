@@ -1,6 +1,6 @@
 {
-  "name": "Automaticator",
-  "description": "Automatic API Webhook Demo Application",
+  "name": "Driving Tracker",
+  "description": "Tracks your Driving and Mood for display in SmartWatches",
   "version": "0.1.0",
   "private": false,
   "engines": {

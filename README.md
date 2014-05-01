@@ -1,3 +1,10 @@
+# Driving Tracker
+
+Driving Tracker is a IoT & Wearables Hackathon Project which receives driving data from Automatic devices and Emotiv EEG Headsets and makes it available for display with Smartwatches. Toq and Pebble applications were developed to display the driving information as well as the mood as detected by the Emotiv Headset. Different songs are suggested by the Toq depending on the mood, selecting the song from the watch results in the song being automatically played by the connected phone.
+
+The server component is based on the Automaticator Webhook Sample, with additional apis to post and retrieve data.
+
+
 # Automaticator
 
 A node.js app to demonstrate the use of the [_Automatic_ Webook API](http://automatic.com/developer/).  It shows driving events, such as ignition on, for the logged in user in real time on a map.
